@@ -1,0 +1,11 @@
+{
+  "name": "speech-analysis-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@vercel/node": "latest",
+    "node-fetch": "^3.3.2",
+    "cors": "^2.8.5"
+  }
+}
