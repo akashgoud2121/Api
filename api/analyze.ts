@@ -144,7 +144,7 @@ Follow these instructions when generating the JSON:
       });
     }
 
-    const geminiData = await geminiResponse.json();
+    const geminiData = await geminiResponse.json() as any;
     const responseText = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
     if (!responseText) {
