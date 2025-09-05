@@ -193,9 +193,18 @@ Follow these instructions when generating the JSON:
     return res.status(200).json(parsedOutput);
 
   } catch (error: any) {
-    console.error('Analysis error:', error);
+    console.error('Analysis error:', error.message || error);
+    
+    // Handle timeout errors specifically
+    if (error.name === 'AbortError') {
+      return res.status(408).json({ 
+        error: 'Request timeout - try with shorter content' 
+      });
+    }
+    
     return res.status(500).json({ 
-      error: 'Analysis failed due to server error' 
+      error: 'Analysis failed due to server error',
+      details: error.message?.substring(0, 100) || 'Unknown error'
     });
   }
 });
